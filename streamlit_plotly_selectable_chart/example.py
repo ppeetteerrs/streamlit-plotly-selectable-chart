@@ -20,12 +20,16 @@ if (fig_state is not None) and (fig_state.get("x0") is not None) and (fig_state.
 
 
 fig = px.line(data_frame=df, x="x", y="y")
-fig.update_layout(dict(dragmode="select", selectdirection="h"))
+fig.update_layout(dict(dragmode="select", selectdirection="h", clickmode="none"))
 
 
 plotly_selectable_chart(
     fig,
     "fig",
     use_container_width=True,
-    config=dict(modeBarButtonsToRemove=["zoom", "zoomIn", "zoomOut", "pan", "autoscale"], displaylogo=False),
+    config=dict(
+        modeBarButtonsToRemove=["zoom", "zoomIn", "zoomOut", "pan", "autoscale", "toImage"],
+        displaylogo=False,
+        displayModeBar=True,
+    ),
 )
